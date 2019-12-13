@@ -20,12 +20,6 @@
   border-color: #52B415;
 }
 
-.inspector-buttons .btn-secondary {
-  color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
-}
-
 .inspector-buttons button:disabled {
   opacity: 0.65;
   cursor: not-allowed;

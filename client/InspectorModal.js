@@ -1,9 +1,13 @@
 import React, { useState } from 'camunda-modeler-plugin-helpers/react';
 import { Modal } from 'camunda-modeler-plugin-helpers/components';
 
+import Tooltip from 'react-simple-tooltip';
+
 import InspectorView from './InspectorView';
 
 import Icon from './json.svg';
+
+import { css } from 'styled-components';
 
 
 // polyfill upcoming structural components
@@ -28,12 +32,21 @@ export default function InspectorModal({ onClose, json }) {
 
     <Footer>
       <div className="inspector-buttons">
-        <button
-          className="btn-primary"
-          disabled={ true }
-          onClick={ () => onClose(definitions) }>
+        <Tooltip
+          content="Currently not available 🎅🏻"
+          background="white"
+          border="grey"
+          color="black"
+          padding={ 5 }
+          customCss={ css`white-space: nowrap; border-radius: 5px` }
+          fixed={ false }>
+          <button
+            className="btn-primary"
+            disabled={ true }
+            onClick={ () => onClose(definitions) }>
             Save
-        </button>
+          </button>
+        </Tooltip>
         <button
           className="btn-secondary"
           onClick={ () => onClose() }>
