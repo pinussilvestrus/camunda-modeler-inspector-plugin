@@ -1,26 +1,20 @@
-/**
- * Copyright Camunda Services GmbH and/or licensed to Camunda Services GmbH
- * under one or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information regarding copyright
- * ownership.
- *
- * Camunda licenses this file to you under the MIT; you may not use this file
- * except in compliance with the MIT License.
- */
-
-/* eslint-disable no-unused-vars*/
 import React, { Fragment, PureComponent } from 'camunda-modeler-plugin-helpers/react';
 import { Fill } from 'camunda-modeler-plugin-helpers/components';
 
 import InspectorModal from './InspectorModal';
 
-import { forEach, isObject } from 'min-dash';
+import { forEach, isObject, find } from 'min-dash';
 
 import Icon from './json.svg';
 
 export default class InspectorPlugin extends PureComponent {
 
-  state = { modalOpen: null, definitions: {} }
+  state = {
+    activeTab: null,
+    modalOpen: null,
+    definitions: {},
+    modelers: []
+  }
 
   constructor(props) {
     super(props);
@@ -33,15 +27,40 @@ export default class InspectorPlugin extends PureComponent {
 
       const {
         modeler,
+        tab
       } = event;
 
-      this.modeler = modeler;
-      const self = this;
+      const {
+        modelers
+      } = this.state;
 
-      modeler.on('import.done', function(e) {
-        self.setState({ definitions: modeler.getDefinitions() });
+      modelers.push({
+        tab: tab.id,
+        modeler
       });
+    });
 
+    subscribe('app.activeTabChanged', ({ activeTab }) => {
+      this.setState({ activeTab });
+    });
+  }
+
+  getModeler(tab) {
+    const found = find(this.state.modelers, m => m.tab === tab.id);
+
+    return found ? found.modeler : null;
+  }
+
+  openModal = () => {
+    const {
+      activeTab
+    } = this.state;
+
+    const modeler = this.getModeler(activeTab);
+
+    this.setState({
+      modalOpen: true,
+      definitions: modeler.getDefinitions()
     });
   }
 
@@ -67,9 +86,8 @@ export default class InspectorPlugin extends PureComponent {
       return;
     }
 
-    const modeler = this.modeler;
-
     // todo(pinussilvestrus): find good way to update definitions
+    // const modeler = this.modeler;
     // modeler._definitions = merge({}, modeler._definitions, definitions);
 
     this.update();
@@ -78,7 +96,7 @@ export default class InspectorPlugin extends PureComponent {
   render() {
     return <Fragment>
       <Fill slot="toolbar" group="9_inspector">
-        <Icon className="inspector-icon" onClick={ () => this.setState({ modalOpen: true }) } />
+        <Icon className="inspector-icon" onClick={ this.openModal } />
       </Fill>
       { this.state.modalOpen && (
         <InspectorModal
@@ -94,11 +112,13 @@ export default class InspectorPlugin extends PureComponent {
 
 // helpers //////////////
 
+// eslint-disable-next-line
 function log(...args) {
   console.log('[JSONPlugin]', ...args);
 }
 
 // @Deprecated
+// eslint-disable-next-line
 function merge(target, ...sources) {
 
   if (!sources.length) {

@@ -162,17 +162,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _json_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./json.svg */ "./client/json.svg");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * Copyright Camunda Services GmbH and/or licensed to Camunda Services GmbH
- * under one or more contributor license agreements. See the NOTICE file
- * distributed with this work for additional information regarding copyright
- * ownership.
- *
- * Camunda licenses this file to you under the MIT; you may not use this file
- * except in compliance with the MIT License.
- */
-
-/* eslint-disable no-unused-vars*/
 
 
 
@@ -183,8 +172,21 @@ class InspectorPlugin extends camunda_modeler_plugin_helpers_react__WEBPACK_IMPO
     super(props);
 
     _defineProperty(this, "state", {
+      activeTab: null,
       modalOpen: null,
-      definitions: {}
+      definitions: {},
+      modelers: []
+    });
+
+    _defineProperty(this, "openModal", () => {
+      const {
+        activeTab
+      } = this.state;
+      const modeler = this.getModeler(activeTab);
+      this.setState({
+        modalOpen: true,
+        definitions: modeler.getDefinitions()
+      });
     });
 
     _defineProperty(this, "handleClosed", definitions => {
@@ -194,10 +196,10 @@ class InspectorPlugin extends camunda_modeler_plugin_helpers_react__WEBPACK_IMPO
 
       if (!definitions) {
         return;
-      }
-
-      const modeler = this.modeler; // todo(pinussilvestrus): find good way to update definitions
+      } // todo(pinussilvestrus): find good way to update definitions
+      // const modeler = this.modeler;
       // modeler._definitions = merge({}, modeler._definitions, definitions);
+
 
       this.update();
     });
@@ -207,16 +209,29 @@ class InspectorPlugin extends camunda_modeler_plugin_helpers_react__WEBPACK_IMPO
     } = props;
     subscribe('bpmn.modeler.created', event => {
       const {
-        modeler
+        modeler,
+        tab
       } = event;
-      this.modeler = modeler;
-      const self = this;
-      modeler.on('import.done', function (e) {
-        self.setState({
-          definitions: modeler.getDefinitions()
-        });
+      const {
+        modelers
+      } = this.state;
+      modelers.push({
+        tab: tab.id,
+        modeler
       });
     });
+    subscribe('app.activeTabChanged', ({
+      activeTab
+    }) => {
+      this.setState({
+        activeTab
+      });
+    });
+  }
+
+  getModeler(tab) {
+    const found = Object(min_dash__WEBPACK_IMPORTED_MODULE_3__["find"])(this.state.modelers, m => m.tab === tab.id);
+    return found ? found.modeler : null;
   }
 
   update() {
@@ -236,9 +251,7 @@ class InspectorPlugin extends camunda_modeler_plugin_helpers_react__WEBPACK_IMPO
       group: "9_inspector"
     }, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_json_svg__WEBPACK_IMPORTED_MODULE_4__["default"], {
       className: "inspector-icon",
-      onClick: () => this.setState({
-        modalOpen: true
-      })
+      onClick: this.openModal
     })), this.state.modalOpen && camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InspectorModal__WEBPACK_IMPORTED_MODULE_2__["default"], {
       onClose: this.handleClosed.bind(this),
       json: this.state.definitions
@@ -246,10 +259,12 @@ class InspectorPlugin extends camunda_modeler_plugin_helpers_react__WEBPACK_IMPO
   }
 
 } // helpers //////////////
+// eslint-disable-next-line
 
 function log(...args) {
   console.log('[JSONPlugin]', ...args);
 } // @Deprecated
+// eslint-disable-next-line
 
 
 function merge(target, ...sources) {
