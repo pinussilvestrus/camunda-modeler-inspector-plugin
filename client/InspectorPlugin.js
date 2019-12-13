@@ -14,7 +14,7 @@ import { Fill } from 'camunda-modeler-plugin-helpers/components';
 
 import InspectorModal from './InspectorModal';
 
-import { forEach } from 'min-dash';
+import { forEach, isObject } from 'min-dash';
 
 export default class InspectorPlugin extends PureComponent {
 
@@ -142,8 +142,4 @@ function merge(target, ...sources) {
 
   return target;
 
-}
-
-function isObject(obj) {
-  return Object.prototype.toString.call(obj) === '[object Object]';
 }

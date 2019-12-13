@@ -32,10 +32,7 @@
     "webpack-cli": "^3.3.7"
   },
   "dependencies": {
-    "jsoneditor": "^8.0.0",
-    "jsoneditor-react": "^2.0.0",
     "min-dash": "^3.5.2",
-    "react-json-editor-ajrm": "^2.5.9",
-    "react-json-view": "^1.19.1"
+    "react-json-editor-ajrm": "^2.5.9"
   }
 }

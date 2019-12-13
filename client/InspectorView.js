@@ -4,18 +4,17 @@ import JSONInput from 'react-json-editor-ajrm';
 
 import locale from 'react-json-editor-ajrm/locale/en';
 
-import { JsonEditor as Editor } from 'jsoneditor-react';
-import 'jsoneditor-react/es/editor.min.css';
+import { forEach, isObject, isArray, map } from 'min-dash';
 
 export default function InspectorView({ json, onChange }) {
 
-  // todo(pinussilvestrus): not showing inherited props
+  json = ensureAllProps({}, json);
 
   const handleChange = ({ jsObject }) => onChange(jsObject);
 
   return (
     <div>
-      { true && <JSONInput
+      <JSONInput
         id='json-editor'
         placeholder={ json }
         onChange={ handleChange }
@@ -24,15 +23,52 @@ export default function InspectorView({ json, onChange }) {
         onKeyPressUpdate={ false }
         confirmGood={ false }
         viewOnly={ true }
-      /> }
-
-      {
-        false && <Editor
-          value={ json }
-          onChange={ handleChange }
-        />
-      }
+      />
     </div>
   );
 
+}
+
+// helpers /////
+
+const skipKeys = [
+  'bpmnElement',
+  '$parent',
+  'outgoing',
+  'incoming'
+];
+
+function ensureAllProps(target, source) {
+
+  forEach(Object.getOwnPropertyNames(source), key => {
+    const sourceVal = source[key];
+
+    if (key === '__proto__') {
+      return;
+    }
+
+    if (skipKeys.includes(key)) {
+      target[key] = (source[key] || {}).id;
+      return target;
+    }
+
+    let targetVal = target[key];
+
+    if (isObject(sourceVal)) {
+
+      if (!isObject(targetVal)) {
+
+        // override target[key] with object
+        targetVal = {};
+      }
+
+      target[key] = ensureAllProps(targetVal, sourceVal);
+    } else if (isArray(sourceVal)) {
+      target[key] = map(sourceVal, s => ensureAllProps({}, s));
+    } else {
+      target[key] = sourceVal;
+    }
+  });
+
+  return target;
 }
