@@ -56,7 +56,21 @@ export default class InspectorPlugin extends PureComponent {
       activeTab
     } = this.state;
 
+    const {
+      displayNotification
+    } = this.props;
+
     const modeler = this.getModeler(activeTab);
+
+    if (!modeler) {
+      displayNotification({
+        type: 'error',
+        title: 'Not available for this tab',
+        duration: 4000
+      });
+
+      return;
+    }
 
     this.setState({
       modalOpen: true,

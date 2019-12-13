@@ -194,7 +194,20 @@ class InspectorPlugin extends camunda_modeler_plugin_helpers_react__WEBPACK_IMPO
       const {
         activeTab
       } = this.state;
+      const {
+        displayNotification
+      } = this.props;
       const modeler = this.getModeler(activeTab);
+
+      if (!modeler) {
+        displayNotification({
+          type: 'error',
+          title: 'Not available for this tab',
+          duration: 4000
+        });
+        return;
+      }
+
       this.setState({
         modalOpen: true,
         definitions: modeler.getDefinitions()
