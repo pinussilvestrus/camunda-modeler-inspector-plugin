@@ -16,8 +16,8 @@
 
 .inspector-buttons .btn-primary {
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #52B415;
+  border-color: #52B415;
 }
 
 .inspector-buttons .btn-secondary {
@@ -49,7 +49,7 @@
 }
 
 .inspector-icon-modal {
-  width: 14px;
+  width: 18px;
   vertical-align: middle;
 }
 
