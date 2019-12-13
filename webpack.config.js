@@ -21,12 +21,12 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        use: 'react-svg-loader'
       }
     ]
   },

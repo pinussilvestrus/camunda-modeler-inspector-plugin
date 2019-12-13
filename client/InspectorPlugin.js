@@ -16,6 +16,8 @@ import InspectorModal from './InspectorModal';
 
 import { forEach, isObject } from 'min-dash';
 
+import Icon from './json.svg';
+
 export default class InspectorPlugin extends PureComponent {
 
   state = { modalOpen: null, definitions: {} }
@@ -76,9 +78,7 @@ export default class InspectorPlugin extends PureComponent {
   render() {
     return <Fragment>
       <Fill slot="toolbar" group="9_inspector">
-        <button type="button" onClick={ () => this.setState({ modalOpen: true }) }>
-        Inspect
-        </button>
+        <Icon className="inspector-icon" onClick={ () => this.setState({ modalOpen: true }) } />
       </Fill>
       { this.state.modalOpen && (
         <InspectorModal
