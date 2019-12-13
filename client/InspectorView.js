@@ -12,8 +12,22 @@ export default function InspectorView({ json, onChange }) {
 
   const handleChange = ({ jsObject }) => onChange(jsObject);
 
+  const handleKeyDown = (event) => {
+    const {
+      keyCode,
+      ctrlKey,
+      metaKey
+    } = event;
+
+    if (keyCode === 67 && (ctrlKey || metaKey)) { // <C>
+      event.preventDefault();
+
+      document.execCommand('copy');
+    }
+  };
+
   return (
-    <div>
+    <div onKeyDown={ handleKeyDown }>
       <JSONInput
         id='json-editor'
         placeholder={ json }

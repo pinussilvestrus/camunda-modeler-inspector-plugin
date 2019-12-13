@@ -335,7 +335,23 @@ function InspectorView({
     jsObject
   }) => onChange(jsObject);
 
-  return camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_json_editor_ajrm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  const handleKeyDown = event => {
+    const {
+      keyCode,
+      ctrlKey,
+      metaKey
+    } = event;
+
+    if (keyCode === 67 && (ctrlKey || metaKey)) {
+      // <C>
+      event.preventDefault();
+      document.execCommand('copy');
+    }
+  };
+
+  return camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onKeyDown: handleKeyDown
+  }, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_json_editor_ajrm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     id: "json-editor",
     placeholder: json,
     onChange: handleChange,
