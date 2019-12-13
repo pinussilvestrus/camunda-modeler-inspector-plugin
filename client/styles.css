@@ -1,37 +1,59 @@
-#inspector-buttons {
+.inspector-buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-#inspector-buttons button {
+.inspector-buttons button {
+  cursor: pointer;
   font-size: 16px;
   margin-left: 6px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border-radius: 0.25rem;
 }
 
-#inspector-buttons button:disabled {
-    color: gray;
-    cursor: not-allowed;
+.inspector-buttons .btn-primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.inspector-buttons .btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.inspector-buttons button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
 #json-editor {
   width: 100%;
-  height: 500px
 }
 
 .inspector-icon {
-    width: 30px;
-    height: 30px;
-    box-sizing: border-box;
-    border-radius: 3px;
-    padding: 5px;
-    display: box;
-    border: solid 1px transparent;
-    background: transparent;
-    vertical-align: middle;
-    margin: 2px 4px;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 5px;
+  display: box;
+  border: solid 1px transparent;
+  background: transparent;
+  vertical-align: middle;
+  margin: 2px 4px;
+}
+
+.inspector-icon-modal {
+  width: 14px;
+  vertical-align: middle;
 }
 
 .inspector-icon:hover {
-    background: #f8f8f8;
-    border: solid 1px #cccccc;
+  background: #f8f8f8;
+  border: solid 1px #cccccc;
 }

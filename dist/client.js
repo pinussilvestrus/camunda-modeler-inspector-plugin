@@ -100,6 +100,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var camunda_modeler_plugin_helpers_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! camunda-modeler-plugin-helpers/components */ "./node_modules/camunda-modeler-plugin-helpers/components.js");
 /* harmony import */ var _InspectorView__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InspectorView */ "./client/InspectorView.js");
+/* harmony import */ var _json_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./json.svg */ "./client/json.svg");
+
 
 
  // polyfill upcoming structural components
@@ -123,16 +125,21 @@ function InspectorModal({
   const [definitions, setDefinitions] = Object(camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0__["useState"])(json);
   return camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(camunda_modeler_plugin_helpers_components__WEBPACK_IMPORTED_MODULE_1__["Modal"], {
     onClose: onClose
-  }, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, null, "Object Tree Inspector"), camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Body, null, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InspectorView__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, null, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_json_svg__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "inspector-icon-modal"
+  }), " Object Tree Inspector"), camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Body, null, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InspectorView__WEBPACK_IMPORTED_MODULE_2__["default"], {
     json: definitions,
     onChange: json => setDefinitions(json)
   })), camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Footer, null, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    id: "inspector-buttons"
+    className: "inspector-buttons"
   }, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "button",
+    className: "btn-primary",
     disabled: true,
     onClick: () => onClose(definitions)
-  }, "Save"))));
+  }, "Save"), camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn-secondary",
+    onClick: () => onClose()
+  }, "Cancel"))));
 }
 
 /***/ }),
@@ -320,6 +327,7 @@ function InspectorView({
     locale: react_json_editor_ajrm_locale_en__WEBPACK_IMPORTED_MODULE_2___default.a,
     theme: "light_mitsuketa_tribute",
     onKeyPressUpdate: false,
+    height: "500px",
     confirmGood: false,
     viewOnly: true
   }));

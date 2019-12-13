@@ -3,6 +3,9 @@ import { Modal } from 'camunda-modeler-plugin-helpers/components';
 
 import InspectorView from './InspectorView';
 
+import Icon from './json.svg';
+
+
 // polyfill upcoming structural components
 const Title = Modal.Title || (({ children }) => <h2>{ children }</h2>);
 const Body = Modal.Body || (({ children }) => <div>{ children }</div>);
@@ -14,7 +17,7 @@ export default function InspectorModal({ onClose, json }) {
 
   return <Modal onClose={ onClose }>
     <Title>
-      Object Tree Inspector
+      <Icon className="inspector-icon-modal" /> Object Tree Inspector
     </Title>
 
     <Body>
@@ -24,12 +27,17 @@ export default function InspectorModal({ onClose, json }) {
     </Body>
 
     <Footer>
-      <div id="inspector-buttons">
+      <div className="inspector-buttons">
         <button
-          type="button"
+          className="btn-primary"
           disabled={ true }
           onClick={ () => onClose(definitions) }>
             Save
+        </button>
+        <button
+          className="btn-secondary"
+          onClick={ () => onClose() }>
+            Cancel
         </button>
       </div>
     </Footer>

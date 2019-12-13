@@ -21,6 +21,7 @@ export default function InspectorView({ json, onChange }) {
         locale={ locale }
         theme='light_mitsuketa_tribute'
         onKeyPressUpdate={ false }
+        height="500px"
         confirmGood={ false }
         viewOnly={ true }
       />
