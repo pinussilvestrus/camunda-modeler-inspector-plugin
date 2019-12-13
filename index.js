@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: 'json-viewer',
-  script: './dist/client.js'
+  name: 'Inspector',
+  script: './dist/client.js',
+  style: './client/styles.css'
 };

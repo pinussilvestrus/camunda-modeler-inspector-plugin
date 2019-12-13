@@ -1,4 +1,4 @@
-# Camunda Modeler json-tab Plug-in
+# camunda-modeler-inspector plugin
 
 [![Compatible with Camunda Modeler version 3.3](https://img.shields.io/badge/Camunda%20Modeler-3.3+-blue.svg)](https://github.com/camunda/camunda-modeler)
 

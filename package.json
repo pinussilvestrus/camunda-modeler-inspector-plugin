@@ -1,7 +1,7 @@
 {
-  "name": "camunda-modeler-plugin-json-tab",
+  "name": "camunda-modeler-inspector-plugin",
   "version": "0.0.0",
-  "description": "The Camunda Modeler json-tab plug-in",
+  "description": "Camunda Modeler plugin for inspecting json object tree",
   "main": "index.js",
   "scripts": {
     "all": "run-s bundle",
@@ -17,14 +17,25 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "camunda-modeler-plugin-helpers": "^3.4.0-alpha.0",
-    "npm-run-all": "^4.1.5",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
+    "css-loader": "^3.3.2",
     "eslint": "^5.16.0",
     "eslint-plugin-bpmn-io": "^0.10.0",
-    "eslint-plugin-import": "^2.18.2"
+    "eslint-plugin-import": "^2.18.2",
+    "npm-run-all": "^4.1.5",
+    "style-loader": "^1.0.1",
+    "svg-inline-loader": "^0.8.0",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
+  },
+  "dependencies": {
+    "jsoneditor": "^8.0.0",
+    "jsoneditor-react": "^2.0.0",
+    "min-dash": "^3.5.2",
+    "react-json-editor-ajrm": "^2.5.9",
+    "react-json-view": "^1.19.1"
   }
 }

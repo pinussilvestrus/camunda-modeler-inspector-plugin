@@ -1,0 +1,14 @@
+#inspector-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#inspector-buttons button {
+  font-size: 16px;
+  margin-left: 6px;
+}
+
+#json-editor {
+  width: 100%;
+  height: 500px
+}

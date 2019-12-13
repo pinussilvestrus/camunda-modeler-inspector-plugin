@@ -2,6 +2,6 @@ import {
   registerClientExtension
 } from 'camunda-modeler-plugin-helpers';
 
-import Plugin from './Plugin';
+import InspectorPlugin from './InspectorPlugin';
 
-registerClientExtension(Plugin);
+registerClientExtension(InspectorPlugin);
