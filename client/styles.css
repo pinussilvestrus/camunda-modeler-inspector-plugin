@@ -8,6 +8,11 @@
   margin-left: 6px;
 }
 
+#inspector-buttons button:disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
 #json-editor {
   width: 100%;
   height: 500px
