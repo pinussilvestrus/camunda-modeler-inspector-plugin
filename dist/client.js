@@ -371,6 +371,7 @@ function InspectorView({
     theme: "light_mitsuketa_tribute",
     onKeyPressUpdate: false,
     height: "500px",
+    width: "100%",
     confirmGood: false,
     viewOnly: true
   }));

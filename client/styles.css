@@ -1,6 +1,7 @@
 .inspector-buttons {
   display: flex;
   justify-content: flex-end;
+  margin-top: 1rem;
 }
 
 .inspector-buttons button {
@@ -16,17 +17,13 @@
 
 .inspector-buttons .btn-primary {
   color: #fff;
-  background-color: #52B415;
-  border-color: #52B415;
+  background-color: #52b415;
+  border-color: #52b415;
 }
 
 .inspector-buttons button:disabled {
   opacity: 0.65;
   cursor: not-allowed;
-}
-
-#json-editor {
-  width: 100%;
 }
 
 .inspector-icon {
