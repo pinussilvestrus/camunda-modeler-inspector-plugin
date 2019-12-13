@@ -33,7 +33,6 @@ export default function InspectorView({ json, onChange }) {
         placeholder={ json }
         onChange={ handleChange }
         locale={ locale }
-        theme='light_mitsuketa_tribute'
         onKeyPressUpdate={ false }
         height="500px"
         width="100%"

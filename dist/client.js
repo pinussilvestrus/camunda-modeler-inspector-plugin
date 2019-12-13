@@ -381,7 +381,6 @@ function InspectorView({
     placeholder: json,
     onChange: handleChange,
     locale: react_json_editor_ajrm_locale_en__WEBPACK_IMPORTED_MODULE_2___default.a,
-    theme: "light_mitsuketa_tribute",
     onKeyPressUpdate: false,
     height: "500px",
     width: "100%",
