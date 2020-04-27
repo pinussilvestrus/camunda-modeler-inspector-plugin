@@ -41,14 +41,14 @@ export default function InspectorModal({ onClose, json }) {
           customCss={ css`white-space: nowrap; border-radius: 5px` }
           fixed={ false }>
           <button
-            className="btn-primary"
+            className="btn btn-primary"
             disabled={ true }
             onClick={ () => onClose(definitions) }>
             Save
           </button>
         </Tooltip>
         <button
-          className="btn-secondary"
+          className="btn btn-secondary"
           onClick={ () => onClose() }>
             Cancel
         </button>

@@ -145,11 +145,11 @@ function InspectorModal({
     customCss: styled_components__WEBPACK_IMPORTED_MODULE_5__["css"]`white-space: nowrap; border-radius: 5px`,
     fixed: false
   }, camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn-primary",
+    className: "btn btn-primary",
     disabled: true,
     onClick: () => onClose(definitions)
   }, "Save")), camunda_modeler_plugin_helpers_react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "btn-secondary",
+    className: "btn btn-secondary",
     onClick: () => onClose()
   }, "Cancel"))));
 }

@@ -4,26 +4,9 @@
   margin-top: 1rem;
 }
 
-.inspector-buttons button {
-  cursor: pointer;
-  font-size: 16px;
-  margin-left: 6px;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  border-radius: 0.25rem;
-}
 
-.inspector-buttons .btn-primary {
-  color: #fff;
-  background-color: #52b415;
-  border-color: #52b415;
-}
-
-.inspector-buttons button:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
+.inspector-buttons .btn-secondary {
+  margin-left: 15px;
 }
 
 .inspector-icon {
