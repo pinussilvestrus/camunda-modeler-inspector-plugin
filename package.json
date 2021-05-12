@@ -16,25 +16,25 @@
     "plugin"
   ],
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
+    "@babel/core": "^7.14.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
     "camunda-modeler-plugin-helpers": "^3.4.0-alpha.0",
-    "css-loader": "^3.3.2",
-    "eslint": "^5.16.0",
-    "eslint-plugin-bpmn-io": "^0.10.0",
-    "eslint-plugin-import": "^2.18.2",
+    "css-loader": "^5.2.4",
+    "eslint": "^7.26.0",
+    "eslint-plugin-bpmn-io": "^0.12.0",
+    "eslint-plugin-import": "^2.22.1",
     "npm-run-all": "^4.1.5",
     "react-svg-loader": "^3.0.3",
-    "style-loader": "^1.0.1",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "style-loader": "^2.0.0",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0"
   },
   "dependencies": {
-    "min-dash": "^3.5.2",
-    "react-json-editor-ajrm": "^2.5.9",
-    "react-simple-tooltip": "^2.6.1",
-    "styled-components": "^4.4.1"
+    "min-dash": "^3.7.0",
+    "react-json-editor-ajrm": "^2.5.13",
+    "react-simple-tooltip": "^2.6.3",
+    "styled-components": "^5.3.0"
   }
 }
